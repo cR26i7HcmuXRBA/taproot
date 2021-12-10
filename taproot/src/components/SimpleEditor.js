@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
 import {Editor, EditorState} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
@@ -11,4 +11,4 @@ function SimpleEditor() {
   return <Editor editorState={editorState} onChange={setEditorState} />;
 }
 
-export default SimpleEditor;
+ReactDOM.render(<MyEditor />, document.getElementById('container'));
