@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom';
 import {Editor, EditorState} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
-function SimpleEditor() {
-  const [editorState, setEditorState] = React.useState(
-    () => EditorState.createEmpty(),
-  );
+class SimpleEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {editorState: EditorState.createEmpty()};
+    this.onChange = editorState => this.setState({editorState});
+  }
 
-  return <Editor editorState={editorState} onChange={setEditorState} />;
+  render() {
+    return (
+      <div>
+        test
+        <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      </div>
+    );
+  }
 }
 
-ReactDOM.render(<MyEditor />, document.getElementById('container'));
+export default SimpleEditor;
